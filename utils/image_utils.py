@@ -26,7 +26,8 @@ def warpped_depth_inv(depth):
 
 def psnr_with_mask(img1, img2, mask):
     # 创建一个mask，其中非零元素对应的位置为True，零元素对应的位置为False
-    mask_bool = mask.repeat(3, 1, 1) != 0
+    # mask_bool = mask.repeat(3, 1, 1) != 0
+    mask_bool = mask != 0
 
     # 使用mask选择img1和img2中的元素，然后计算他们的平方差值
     mse = ((img1[mask_bool] - img2[mask_bool]) ** 2).mean()
